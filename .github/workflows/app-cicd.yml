@@ -1,0 +1,35 @@
+name: CI/CD for Reviews Application
+on:
+  push: 
+    branches:
+      - main 
+
+# permission can be added at job level or workflow level
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read   # This is required for checking out the repository
+
+jobs:
+    deploy- app:
+        environment: |
+          ${{
+              github.ref == 'refs/heads/main' && 'prod' ||
+              startsWith(github.ref, 'refs/heads/feature/') && 'dev'
+            }}
+        runs-on: ubuntu-22.04
+
+        steps:
+           - name: Checkout repository
+             uses: actions/checkout@v3  
+
+           - name: Login to AWS Role
+             uses: aws-actions/configure-aws-credentials@v5.1.1
+             with:
+               aws-region: us-east-1
+               role-to-assume: ${{ vars.IAM_ROLE }}
+               role-session-name: gha-login-session
+
+           - name: Build backend Image
+             working-directory: ./api-backend/
+              run: |
+                docker build -t reviews-app:backend:0.1 .
