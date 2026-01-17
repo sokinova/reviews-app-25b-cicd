@@ -10,7 +10,7 @@ permissions:
   contents: read   # This is required for checking out the repository
 
 jobs:
-    deploy- app:
+    deploy-app:
         environment: |
           ${{
               github.ref == 'refs/heads/main' && 'prod' ||
