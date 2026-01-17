@@ -32,11 +32,11 @@ jobs:
              run:
                 docker build -t reviews-backend:0.1 .
 
-           - name: Login to AWS ECR
+           - name: Login to Image Registry
              run: | 
                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 662585344222.dkr.ecr.us-east-1.amazonaws.com
               
-           - name: Push imach to AWS ECR 
+           - name: Push image to AWS ECR 
              run: |
                 docker tag reviews-backend:0.1 662585344222.dkr.ecr.us-east-1.amazonaws.com/reviews-backend:0.1 
-                docker push 662585344222.dkr.ec r.us-east-1.amazonaws.com/reviews-backend:0.1 
+                docker push 662585344222.dkr.ecr.us-east-1.amazonaws.com/reviews-backend:0.1 
