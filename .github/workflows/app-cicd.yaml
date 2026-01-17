@@ -32,4 +32,4 @@ jobs:
            - name: Build backend image
              working-directory: ./api-backend/
              run:
-                docker build -t reviews-backend:0.1 .
+                docker build -t reviews-backend:0.2 .
