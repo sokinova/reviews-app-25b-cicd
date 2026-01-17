@@ -3,6 +3,7 @@ on:
   push: 
     branches:
       - main 
+      - 'feature/**'  
 
 # permission can be added at job level or workflow level
 permissions:
@@ -11,11 +12,8 @@ permissions:
 
 jobs:
     deploy-app:
-        environment: |
-          ${{
-              github.ref == 'refs/heads/main' && 'prod' ||
-              startsWith(github.ref, 'refs/heads/feature/') && 'dev'
-            }}
+        environment: ${{ github.ref == 'refs/heads/main' && 'prod' || startsWith(github.ref, 'refs/heads/feature/') && 'dev' }}
+
         runs-on: ubuntu-22.04
 
         steps:
