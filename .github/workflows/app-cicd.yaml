@@ -31,5 +31,5 @@ jobs:
 
            - name: Build backend image
              working-directory: ./api-backend/
-             run: |
+             run:
                 docker build -t reviews-backend:0.1 .
