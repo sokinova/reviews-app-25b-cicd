@@ -56,5 +56,10 @@ jobs:
              run: |
                 aws eks update-kubeconfig --name project-x-dev-tf-cluster
                 kubectl get nodes
+           
+           - name: Deploy Backend to EKS
+             run: |
+                kubectl apply -f ./api-backend/k8s/deployment.yml
+                kubectl apply -f ./api-backend/k8s/service.yaml
 
-             
+          
