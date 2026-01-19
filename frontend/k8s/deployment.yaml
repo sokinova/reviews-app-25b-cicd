@@ -16,7 +16,7 @@ spec:
         app: frontend-deployment
     spec:
       containers:
-      - image: 401413892014.dkr.ecr.us-east-1.amazonaws.com/frontend:1.0
+      - image: 662585344222.dkr.ecr.us-east-1.amazonaws.com/reviews-frontend:0.1
         name: frontend
-        resources: {}
-status: {}
+        ports:
+        - containerPort: 80
