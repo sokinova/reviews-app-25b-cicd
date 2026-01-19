@@ -54,7 +54,7 @@ jobs:
           
            - name: Login to Kubernetes cluster
              run: |
-                aws eks update-kubeconfig --name project-x-dev-tf-cluster
+                aws eks update-kubeconfig --name project-x-${{ vars.STAGE }}-tf-cluster
                 kubectl get nodes
            
            - name: Deploy Backend to EKS
