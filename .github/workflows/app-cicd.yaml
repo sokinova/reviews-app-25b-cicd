@@ -63,8 +63,8 @@ jobs:
                 kubectl apply -f ./api-backend/k8s/service.yaml
 
            - name: Deploy Frontend to EKS 
-              run: |
-                  kubectl apply -f ./frontend/k8s/deployment.yaml
-                  kubectl apply -f ./frontend/k8s/service.yaml
+             run: |
+                kubectl apply -f ./frontend/k8s/deployment.yaml
+                kubectl apply -f ./frontend/k8s/service.yaml
 
           
