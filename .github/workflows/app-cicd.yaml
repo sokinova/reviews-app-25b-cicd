@@ -37,6 +37,16 @@ jobs:
              env:
                 REGISTRY: ${{ steps.login-ecr.outputs.registry }}
                 REPOSITORY: reviews-backend
+                IMAGE_TAG: 0.2
+             run: |
+                docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+                docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+            
+           - name: Build, tag, and push docker image to Amazon ECR
+             working-directory: ./frontend/
+             env:
+                REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+                REPOSITORY: reviews-frontend
                 IMAGE_TAG: 0.1
              run: |
                 docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
