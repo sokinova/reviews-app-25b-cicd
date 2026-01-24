@@ -20,8 +20,8 @@ spec:
         ports:
         - containerPort: {{ .Values.port }}
         resources:
-        {{ - with .Values.resources }}
-        {{ - toYaml . | nindent 10 }}
-        {{ - end }}
+        {{- with .Values.resources }}
+        {{ toYaml . | nindent 10 }}
+        {{- end }}
 
  
