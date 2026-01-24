@@ -4,10 +4,9 @@ kind: Ingress
 metadata:
   name: "{{ .Values.app_name }}-ingress"
 spec:
-  ingressClassName: nginx
   rules:
-  - http:
-    host: {{ .Values.ingress.endpoint }}
+  - host: {{ .Values.ingress.endpoint }}
+    http:
       paths:
       - path: /
         pathType: Prefix
@@ -16,4 +15,5 @@ spec:
             name: "{{ .Values.app_name }}-service"
             port:
               number: {{ .Values.port }}
+  ingressClassName: nginx
 {{- end }}
