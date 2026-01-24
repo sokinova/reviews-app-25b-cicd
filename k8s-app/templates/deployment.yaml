@@ -21,7 +21,7 @@ spec:
         - containerPort: {{ .Values.port }}
         resources:
         {{ - with .Values.resources }}
-        {{- toYaml . | nindent 10 }}
-        {{- end }}
+        {{ - toYaml . | nindent 10 }}
+        {{ - end }}
 
  
