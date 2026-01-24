@@ -55,16 +55,14 @@ jobs:
            - name: Login to Kubernetes cluster
              run: |
                 aws eks update-kubeconfig --name project-x-${{ vars.STAGE }}-tf-cluster
-                kubectl get nodes
            
            - name: Deploy Backend to EKS
              run: |
-                kubectl apply -f ./api-backend/k8s/deployment.yml
-                kubectl apply -f ./api-backend/k8s/service.yaml
+                helm upgrade --install reviews-backend-app ./k8s-app/ --values ./k8s-app/dev-values.yaml
 
-           - name: Deploy Frontend to EKS 
-             run: |
-                kubectl apply -f ./frontend/k8s/deployment.yaml
-                kubectl apply -f ./frontend/k8s/service.yaml
+          #  - name: Deploy Frontend to EKS 
+          #    run: | 
+          #       kubectl apply -f ./frontend/k8s/deployment.yaml
+          #       kubectl apply -f ./frontend/k8s/service.yaml
 
           

@@ -1,0 +1,6 @@
+app_name: reviews-backend 
+image: 
+  repo: 662585344222.dkr.ecr.us-east-1.amazonaws.com/reviews-backend #have to change it later 
+  tag: "0.2"
+replica_count: 1
+port: 80
