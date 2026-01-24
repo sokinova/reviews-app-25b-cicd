@@ -6,5 +6,6 @@ replica_count: 1
 port: 80
 serviceType: LoadBalancer
 resources: {}
-ingress: 
-  enabled: false
+ingress:
+  enabled: true
+  endpoint: reviews-api-dev.exchangeweb.net

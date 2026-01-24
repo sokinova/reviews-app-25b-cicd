@@ -5,13 +5,13 @@ image:
 replica_count: 1
 port: 80
 serviceType: LoadBalancer
-resources: 
-  requests: 
+resources:
+  requests:
     cpu: 50m
     memory: 32Mi
-  limits: 
+  limits:
     cpu: 200m
     memory: 64Mi
 ingress:
-  enabled: false
+  enabled: true
   endpoint: reviews-dev.exchangeweb.net
