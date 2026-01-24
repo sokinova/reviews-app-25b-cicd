@@ -1,7 +1,13 @@
 app_name: reviews-frontend 
 image: 
-  repo: 662585344222.dkr.ecr.us-east-1.amazonaws.com/reviews-frontend
+  repo: 662585344222.dkr.ecr.us-east-1.amazonaws.com/reviews-frontend #has to be changed for prod acc
   tag: "0.1"
 replica_count: 1
 port: 80
-servicetype: LoadBalancer
+serviceType: LoadBalancer
+requests: 
+    cpu: 50m
+    memory: 32Mi
+  limits: 
+    cpu: 200m
+    memory: 64Mi

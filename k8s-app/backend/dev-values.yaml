@@ -4,4 +4,7 @@ image:
   tag: "0.1"
 replica_count: 1
 port: 80
-servicetype: LoadBalancer
+serviceType: LoadBalancer
+resources: {}
+ingress: 
+  enabled: false
