@@ -37,7 +37,7 @@ jobs:
              env:
                 REGISTRY: ${{ steps.login-ecr.outputs.registry }}
                 REPOSITORY: reviews-backend
-                IMAGE_TAG: 0.2
+                IMAGE_TAG: 0.1
              run: |
                 docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
                 docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
@@ -58,11 +58,11 @@ jobs:
            
            - name: Deploy Backend to EKS
              run: |
-                helm upgrade --install reviews-backend-app ./k8s-app/ --values ./k8s-app/dev-values.yaml
+                helm upgrade --install reviews-backend-app ./k8s-app/ --values ./k8s-app/backend/${{ vars.STAGE }}-values.yaml
 
-          #  - name: Deploy Frontend to EKS 
-          #    run: | 
-          #       kubectl apply -f ./frontend/k8s/deployment.yaml
-          #       kubectl apply -f ./frontend/k8s/service.yaml
+           - name: Deploy Frontend to EKS 
+             run: | 
+                helm upgrade --install reviews-frontend-app ./k8s-app/ --values ./k8s-app/frontend/${{ vars.STAGE }}-values.yaml
+                
 
           
