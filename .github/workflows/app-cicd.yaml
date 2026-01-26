@@ -58,11 +58,11 @@ jobs:
            
            - name: Deploy Backend to EKS
              run: |
-                helm upgrade --install reviews-backend-app ./k8s-app/ --values ./k8s-app/backend/${{ vars.STAGE }}-values.yaml
+                helm upgrade --install reviews-backend-app ./k8s-app/ --values ./k8s-app/backend/${{ vars.STAGE }}-values.yaml --namespace reviews-app --create-namespace 
 
            - name: Deploy Frontend to EKS 
              run: | 
-                helm upgrade --install reviews-frontend-app ./k8s-app/ --values ./k8s-app/frontend/${{ vars.STAGE }}-values.yaml
+                helm upgrade --install reviews-frontend-app ./k8s-app/ --values ./k8s-app/frontend/${{ vars.STAGE }}-values.yaml --namespace reviews-app --create-namespace 
                 
 
           
