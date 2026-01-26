@@ -11,11 +11,22 @@ ingress:
   endpoint: reviews-api-dev.exchangeweb.net
 env:
   - name: DB_USERNAME
-    value: "admin"
+    valueFrom:
+      secretKeyRef:
+        name: reviews-db-secret
+        key: db_user
   - name: DB_PASSWORD
-    value: "password123"
+    valueFrom:
+      secretKeyRef:
+        name: reviews-db-secret
+        key: db_password
   - name: DB_ENDPOINT
     valueFrom:
       secretKeyRef:
-        name: reviews-backend-secret
+        name: reviews-db-secret
         key: db_host
+  - name: DB_NAME
+    valueFrom:
+      secretKeyRef:
+        name: reviews-db-secret
+        key: db_name
