@@ -7,7 +7,7 @@ port: 80
 serviceType: LoadBalancer
 resources:
   requests:
-    cpu: 10m
+    cpu: 50m
     memory: 16Mi
   limits:
     cpu: 200m
